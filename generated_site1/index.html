@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VibrantTodo</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>VibrantTodo</h1>
+    </header>
+    <section id="task-input">
+        <input id="new-task" placeholder="What needs to be done?" autocomplete="off" />
+        <button id="add-task-btn">Add</button>
+    </section>
+    <nav id="filter-nav">
+        <button data-filter="all">All</button>
+        <button data-filter="active">Active</button>
+        <button data-filter="completed">Completed</button>
+    </nav>
+    <ul id="task-list" class="task-list"></ul>
+    <footer>
+        <small>© 2025 VibrantTodo</small>
+    </footer>
+</body>
+</html>

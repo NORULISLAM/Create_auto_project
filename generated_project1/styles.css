@@ -1,0 +1,222 @@
+/*
+ * styles.css – Base layout and responsive styling for the notebook application.
+ *
+ * This stylesheet defines a two‑column layout using CSS Grid where the sidebar
+ * contains the list of notes and the editor occupies the remaining space. On
+ * smaller screens (≤ 600 px) the layout collapses to a single column with the
+ * sidebar stacked above the editor.
+ *
+ * A simple colour palette, typography, and spacing are provided to make the UI
+ * clear and usable on both desktop and mobile devices.
+ */
+
+/* --------------------------------------------------------------------------
+ * Colour palette & typography
+ * -------------------------------------------------------------------------- */
+:root {
+  /* Primary colours */
+  --color-bg: #fafafa;            /* Light background */
+  --color-surface: #ffffff;      /* Card / panel background */
+  --color-primary: #2c7be5;      /* Accent (buttons, links) */
+  --color-primary-dark: #1a5bb8;
+  --color-text: #333333;         /* Primary text */
+  --color-muted: #777777;        /* Secondary text */
+  --color-border: #e0e0e0;       /* Light borders */
+  --color-hover: #f0f8ff;        /* Row hover background */
+  --color-selected: #d0e7ff;     /* Selected note background */
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+
+  /* Typography */
+  --font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-size-base: 16px;
+  --line-height-base: 1.5;
+}
+
+/* Reset some basic elements */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+/* --------------------------------------------------------------------------
+ * Layout – CSS Grid container
+ * -------------------------------------------------------------------------- */
+#app {
+  /* Assuming the root element of the notebook has id="app" */
+  display: grid;
+  grid-template-columns: 250px 1fr; /* Sidebar width + flexible editor */
+  height: 100vh; /* Full viewport height */
+  overflow: hidden;
+}
+
+/* Sidebar – fixed width on desktop, full width on mobile */
+#sidebar {
+  background-color: var(--color-surface);
+  border-right: 1px solid var(--color-border);
+  padding: var(--spacing-md);
+  overflow-y: auto;
+}
+
+/* Note editor – takes remaining space */
+#note-editor {
+  background-color: var(--color-surface);
+  padding: var(--spacing-md);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --------------------------------------------------------------------------
+ * Note list styling
+ * -------------------------------------------------------------------------- */
+#note-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#note-list li {
+  padding: var(--spacing-sm) var(--spacing-md);
+  margin-bottom: var(--spacing-xs);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+#note-list li:hover {
+  background-color: var(--color-hover);
+}
+
+#note-list li.selected,
+#note-list li.selected:hover {
+  background-color: var(--color-selected);
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+ * Editor controls – inputs, textarea and buttons
+ * -------------------------------------------------------------------------- */
+#note-title {
+  font-size: 1.2rem;
+  padding: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+}
+
+#note-content {
+  flex: 1; /* Fill remaining vertical space */
+  width: 100%;
+  padding: var(--spacing-sm);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  resize: none;
+  font-family: inherit;
+  font-size: 1rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.editor-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.editor-actions button {
+  flex: 1;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+#save-note-btn {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+#save-note-btn:hover {
+  background-color: var(--color-primary-dark);
+}
+
+#delete-note-btn {
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+#delete-note-btn:hover {
+  background-color: #c0392b;
+}
+
+#new-note-btn {
+  width: 100%;
+  margin-top: var(--spacing-md);
+  padding: var(--spacing-sm);
+  background-color: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#new-note-btn:hover {
+  background-color: var(--color-primary-dark);
+}
+
+/* --------------------------------------------------------------------------
+ * Responsive adjustments – stack sidebar on narrow screens
+ * -------------------------------------------------------------------------- */
+@media (max-width: 600px) {
+  #app {
+    grid-template-columns: 1fr;   /* Single column */
+    grid-template-rows: auto 1fr; /* Sidebar first, then editor */
+  }
+
+  #sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--spacing-sm);
+  }
+
+  #note-editor {
+    padding: var(--spacing-sm);
+  }
+}
+
+/* --------------------------------------------------------------------------
+ * Utility classes (optional, can be used elsewhere)
+ * -------------------------------------------------------------------------- */
+.text-muted {
+  color: var(--color-muted);
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: #fff;
+  border: none;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-dark);
+}
