@@ -8,6 +8,15 @@ It works like a multi-agent development team that can take a natural language re
 
 ---
 
+## 🌐 Live Demo / ライブデモ
+
+👉 [Try the project on Hugging Face Spaces](https://huggingface.co/spaces/Jewelr16/Create_new_project)  
+👉 [Hugging Face Spaces でこのプロジェクトを試す](https://huggingface.co/spaces/Jewelr16/Create_new_project)
+
+---
+
+---
+
 ## 📖 Table of Contents / 目次
 
 - [How to Use / 使い方](#how-to-use--使い方)
