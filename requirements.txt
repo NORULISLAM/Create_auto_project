@@ -1,11 +1,15 @@
-groq>=0.31.0
+# requirements.txt
+
+# Core functionality
+gradio>=4.44.0
+python-dotenv>=1.1.1
+
+# LangChain / LangGraph stack
 langchain>=0.3.27
 langchain-core>=0.3.72
-langchain-groq>=0.3.7
 langgraph>=0.6.3
-pip>=25.2
 pydantic>=2.11.7
-python-dotenv>=1.1.1
-gradio>=4.44.0
-uvicorn>=0.30.0
-fastapi>=0.112.0
+
+# Specific model provider
+langchain-groq>=0.3.7
+groq>=0.31.0

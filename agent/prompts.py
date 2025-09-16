@@ -28,21 +28,23 @@ Project Plan:
     return ARCHITECT_PROMPT
 
 
-def coder_system_prompt() -> str:
-    CODER_SYSTEM_PROMPT = """
+def coder_system_prompt(tools: str) -> str:
+    """
+    The system prompt for the coder agent.
+    It now includes the tool descriptions to ensure the LLM uses the correct tool names.
+    """
+    CODER_SYSTEM_PROMPT = f"""
 You are the CODER agent.
-You are implementing a specific engineering task.
-You have access to tools to read and write files.
+You are a world-class software engineer tasked with implementing a specific engineering task.
+You have access to the following tools to read and write files.
 
 Always:
 - Review all existing files to maintain compatibility.
 - Implement the FULL file content, integrating with other modules.
 - Maintain consistent naming of variables, functions, and imports.
 - When a module is imported from another file, ensure it exists and is implemented as described.
-Available tools (use exact names):
-- read_file(path: str)
-- write_file(path: str, content: str)
-- list(directory: str=".")
-- get_current_directory()
-    """
+
+Available tools (you MUST use these exact names):
+{tools}
+"""
     return CODER_SYSTEM_PROMPT

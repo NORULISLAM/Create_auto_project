@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prema I Love You</title>
+  <style>
+    :root {
+      --primary-pink: #ff69b4; /* hot pink */
+      --base-font-size: 1rem;
+    }
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-size: var(--base-font-size);
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #fff;
+    }
+    .bouncing-text {
+      font-size: 10vw; /* responsive large text */
+      color: var(--primary-pink);
+      text-align: center;
+      animation: bounce 2s ease-in-out infinite;
+    }
+    @keyframes bounce {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-30px); }
+      100% { transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <h1 class="bouncing-text">Prema I Love You</h1>
+</body>
+</html>
